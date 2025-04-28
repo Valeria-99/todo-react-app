@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+body {
+  background: #008080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  text-align: center;
+}
+
+h1 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+}
+
+.TodoWrapper {
+  background: #1f1f2f; /* ще глибший темний колір */
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 12px; /* зробити кути м'якшими */
+  width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* тінь */
+  border: 1px solid #4169e150; /* тонка фіолетова рамка */
+}
+
+
+.TodoForm {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.todo-input {
+  outline: none;
+  background: #2d2d44;
+  border: 1px solid #8758ff;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.todo-input::placeholder {
+  color: #aaa;
+}
+
+.todo-btn {
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.todo-btn:hover {
+  background: #6c43e0;
+}
+
+.Todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2d2d44; /* темно-сірий фон для задач */
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.Todo:hover {
+  background: #3a3a55; /* трішки світліший при наведенні */
+}
+
+
+.fa-trash {
+  margin-left: 0.75rem;
+}
+
+.completed {
+  color: #c5aeff;
+  text-decoration: line-through;
+}
+ 
+svg {
+  transition: transform 0.2s ease;
+}
+
+svg:hover {
+  transform: scale(1.2);
+  color: #ffcc00; /* можна міняти колір при наведенні */
+}
+
+.completed {
+  color: #c5aeff;
+  position: relative;
+  overflow: hidden;
+}
+
+.completed::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background: #c5aeff;
+  width: 0;
+  top: 50%;
+  left: 0;
+  animation: strike 0.3s forwards;
+}
+
+@keyframes strike {
+  to {
+    width: 100%;
+  }
+}
+
+/* Робимо адаптивність */
+@media (max-width: 768px) {
+  .TodoWrapper {
+    width: 90%;
+    padding: 1.5rem;
+  }
+  .todo-input {
+    width: 100%;
+  }
+
+  .todo-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .TodoWrapper {
+    margin-top: 3rem;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .todo-input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .Todo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .Todo p {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .Todo div {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
